@@ -1,25 +1,18 @@
-
-
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
+<div align = "center">
+  <%= will_paginate %>
+</div>
 
 <h1>Articles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <%= render 'article', obj: @articles %>
-  </tbody>
-</table>
-
+  <table>
+    <tbody>
+      <%= render 'article', obj: @articles %>
+    </tbody>
+  </table>
 <br>
 
-<%= link_to 'New Article', new_article_path %>
+<div align = "center">
+  <%= will_paginate %>
+</div>

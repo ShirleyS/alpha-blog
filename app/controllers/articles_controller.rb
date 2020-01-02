@@ -4,12 +4,13 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.paginate(page: params[:page], per_page:3)
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+  
   end
 
   # GET /articles/new
@@ -24,7 +25,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    debugger
+    # debugger
     # return render plain: params[:article].inspect
     @article = Article.new(article_params)
     respond_to do |format|

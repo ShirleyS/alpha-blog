@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-
+    @user_articles = @user.articles.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /users/new
