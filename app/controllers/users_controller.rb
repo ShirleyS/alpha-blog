@@ -32,8 +32,9 @@ class UsersController < ApplicationController
 
     # respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         flash[:success] = "welcome to blog #{@user.username}"
-        redirect_to articles_path
+        redirect_to user_path(user)
         # format.html { redirect_to @user, notice: 'User was successfully created.' }
         # format.json { render :show, status: :created, location: @user }
       else
