@@ -38,8 +38,7 @@ class UsersController < ApplicationController
         # format.html { redirect_to @user, notice: 'User was successfully created.' }
         # format.json { render :show, status: :created, location: @user }
       else
-        p "sucks"
-        redirect_to signup_path
+        render 'new'
         # format.html { render :new }
         # format.json { render json: @user.errors, status: :unprocessable_entity }
       end
