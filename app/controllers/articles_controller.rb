@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-  
+
   end
 
   # GET /articles/new
@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
     # debugger
     # return render plain: params[:article].inspect
     @article = Article.new(article_params)
+    @article.user = current_user
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }

@@ -1,15 +1,20 @@
 <% p obj %>
 <% obj.each do |article| %>
-  <tr>
-    <td><%= article.title %></td>
-    <td><%= article.description %></td>
-    <td><%= link_to 'Show', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <div class="article-meta-details">
-      <%= truncate(article.description, length:100) %>
-    </div>
-    <small> Created by: <%= article.user.username if article.user %>, <%= time_ago_in_words(article.created_at) %> ago, last updated: <%= time_ago_in_words(article.updated_at) %></small>
-<
-  </tr>
+<tr>
+  <td><%= article.title %></td>
+  <td><%= article.description %></td>
+  <td><%= link_to 'Show', article %></td>
+
+  <% if logged_in? && current_user == article.user %>
+  <td><%= link_to 'Edit', edit_article_path(article) %></td>
+  <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+  <div class="article-meta-details">
+    <%= truncate(article.description, length:100) %>
+  </div>
+
+  <small> Created by: <%= article.user.username if article.user %>, <%= time_ago_in_words(article.created_at) %> ago, last updated: <%= time_ago_in_words(article.updated_at) %></small>
+  <% end %>
+
+</tr>
 <% end %>
